@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+  font-family: 'Comic Neue', cursive;
+  background-color: orange;
+}
+
+.header a {
+  color: aqua;
+  text-decoration: none;
+}
+
+.header h1 {
+
+}
