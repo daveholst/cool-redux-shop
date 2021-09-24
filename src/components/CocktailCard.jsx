@@ -1,0 +1,38 @@
+import './CocktailCard.css'
+
+import { useEffect, useState } from "react"
+import axios from 'axios';
+
+const CocktailCard = () => {
+  // get the cocktail data?
+  const [cocktailState, setCocktailState] = useState({
+    loading: false,
+    cocktail: null,
+  });
+
+  useEffect(async () => {
+    const result = await axios('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+    setCocktailState({ loading: true, cocktail: result.data });
+
+  }, [setCocktailState]
+  )
+
+  if (!cocktailState.loading) {
+    return (
+    <h4>Loading Data</h4>
+  )
+}
+  console.log(cocktailState)
+  const drinkInfo = cocktailState?.cocktail.drinks[0]
+  return (
+    <div className="cocktail-card">
+      <h3>{drinkInfo.strDrink}</h3>
+      <img src={drinkInfo.strDrinkThumb} alt="" />
+      <p>
+        {drinkInfo.strInstructions}
+      </p>
+    </div>
+  )
+}
+
+export default CocktailCard
